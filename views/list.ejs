@@ -1,0 +1,51 @@
+
+<%- include("header") -%>
+
+    <!-- Scriplet tags -->
+    <!-- <% %> it is only usse for writing logic code that is
+    javascript in html its check line by line so every new
+    line would need this tag as shown below nvm how small the 
+    length of the line is -->
+
+
+<div class="box" id="heading">
+
+    <h1><%= listTitle %></h1>
+    
+</div>
+
+<div class="box">
+
+
+        <!-- these list can be added in the array so as to 
+        not reduce the html code -->
+        
+    <!-- adding them to the array -->
+    
+        <!-- <li>Buy food</li>
+        <li>cook food</li>
+        <li>eat food</li>
+     -->
+    
+     <%  newListItems.forEach(function(item){ %>
+
+    <form action="/delete" method="post">
+        <div class="item">
+            <input type="checkbox" onchange="this.form.submit()" value="<%=item._id%>" name="checkbox">
+            <p> <%= item.name %> </p>
+        </div>
+        <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+    </form>
+     <% }); %>
+
+       <form action="/" method="post" class="addingItems">
+        <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+        <button type="submit" name="list" value=<%= listTitle %>>+</button>
+    </form>
+
+</div>
+
+<%- include("footer") -%>
+
+
+
